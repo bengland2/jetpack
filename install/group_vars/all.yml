@@ -1,0 +1,25 @@
+---
+guest_image_name: pbench_image
+# user can add the guest_image required below
+guest_images:
+  pbench_image:
+    name: pbench_image
+    url: http://cloud.centos.org/centos/8/x86_64/images/CentOS-8-GenericCloud-8.2.2004-20200611.2.x86_64.qcow2
+    type: qcow2
+    convert_to_raw: false
+
+# user can specify the hypervisor on which he wants to create client and server vm's
+hypervisor_hostnames: [ 'compute-0.redhat.local', 'compute-1.redhat.local']
+
+compute_names: ['compute-0', 'compute-1' ]
+
+#name for the client and server
+vm_names: [ client, server ]
+
+overcloudrc: /home/stack/overcloudrc
+
+ports: [ 'client_port', 'server_port']
+
+dns_nameserver: 10.1.32.3
+
+timeout: 30

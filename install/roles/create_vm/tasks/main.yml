@@ -1,0 +1,12 @@
+---
+- name: create a vm's on specified hypervisors
+  shell: . {{ overcloudrc }}; openstack server create --hypervisor-hostname {{ item[0] }} --flavor pbench_flavor --image {{ guest_image_name }} --nic port-id={{ item[1].stdout }} --user-data /home/stack/pass_auth.sh {{ item[2] }}
+  with_together:
+    - "{{ hypervisor_hostnames }}"
+    - "{{ port_ids }}"
+    - "{{ vm_names }}"
+  ignore_errors: yes
+
+- name: wait for vm to boot
+  wait_for:
+     timeout: "{{ timeout }}"
