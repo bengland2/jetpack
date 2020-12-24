@@ -9,11 +9,6 @@
 {{ item.stdout }}
 {% endfor %}
 
-{% if pbench_agent_install|default(false) %}
-[servers:vars]
-# where to get the key
-pbench_key_url = {{ pbench_key_url }}
-
-# where to get the config file
-pbench_config_url = {{ pbench_config_url }}
+{% if trafficgen_host is defined %}
+{{ trafficgen_host.ip }}
 {% endif %}

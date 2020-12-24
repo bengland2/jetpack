@@ -175,6 +175,14 @@ To install Pbench agent on the compute nodes and vm's (i.e client and server),yo
 
 1) To create the client and server
      `ansible-playbook boot.yml`
+
+To install Pbench agent on Trafficgen host, set the below params
+
+trafficgen_host:
+  ip: <ip>
+  ssh_pass: password
+  ssh_user: root
+
 2) Install Pbench agent bootstrapping
      `ansible-playbook pbench_agent_bootstrap.yml -e "repos=<perf-dept-repo>" `
 3) Install Pbench agent install
